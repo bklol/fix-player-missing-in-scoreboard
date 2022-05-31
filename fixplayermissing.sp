@@ -32,8 +32,12 @@ public void Hook_OnThinkPost(int iEnt)
 	{
 		if (IsClientInGame(i)) 
 		{
-			iConnected[i] = 1;
+			if(GetClientTeam(i) < 1)
+				iConnected[i] = 0;
+			else
+				iConnected[i] = 1;
 		}
+		
 	}
 	SetEntDataArray(iEnt, iConnectedOffset, iConnected, MaxClients + 1);
 } 
